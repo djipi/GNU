@@ -48,6 +48,12 @@ fi
 
 # Information.
 # To check:
+# binutils 2.8.1, gcc 2.7.2.2, isl, cloog, newlib 1.8.0
+# binutils 2.9.1, gcc 2.95, isl , cloog ,
+# binutils 2.10.1, gcc 2.95.3, isl , cloog ,
+# binutils 2.11.2a, gcc 2.95.3, isl , cloog ,
+# binutils 2.13.2.1a, gcc 3.1.1, isl , cloog ,
+# binutils 2.13.2.1a, gcc 2.95.3
 # binutils 2.22     , gcc 4.7.0, isl N/A, cloog N/A, newlib 1.20.0  , GDB 7.4
 # binutils 2.23.1   , gcc 4.8.0, isl N/A, cloog N/A, newlib 2.0.0   , GDB 7.5.1                       
 # binutils 2.15 (?) , gcc 3.4.2
@@ -62,62 +68,90 @@ fi
 # binutils 2.28, gcc 7.1.0, isl 0.16.1, cloog 0.18.1, newlib 2.5.0
 #
 # Used with:
-# binutils 2.16.1, gcc 4.9.4 , isl 0.12.2, cloog 0.18.1,             , GDB 8.2.1
-# binutils 2.31.1, gcc 5.5.0 , isl 0.18  , cloog 0.18.1, newlib 3.1.0, GDB 8.2.1
-# binutils 2.27  , gcc 6.4.0 , isl 0.18  , cloog 0.18.1
-# binutils 2.30  , gcc 6.5.0 , isl 0.18  , cloog 0.18.1
-# binutils 2.28  , gcc 7.1.0 , isl 0.16.1, cloog 0.18.1
-# binutils 2.31.1, gcc 7.3.0 , isl 0.16.1, cloog 0.18.1
-# binutils 2.31.1, gcc 7.4.0 , isl 0.18  , cloog 0.18.1
-# binutils 2.33.1, gcc 7.5.0 , isl 0.22  , cloog 0.18.4, newlib 3.1.0, GDB 8.3.1
-# binutils 2.32  , gcc 8.1.0 , isl 0.21  , cloog 0.18.4,             , GDB 8.2.1
-# binutils 2.30  , gcc 8.2.0 , isl 0.18  , cloog 0.18.1,             , GDB 8.2.1
-# binutils 2.31.1, gcc 8.3.0 , isl 0.18  , cloog 0.18.1, newlib 3.1.0, GDB 8.2.1
-# binutils 2.34  , gcc 8.4.0 , isl 0.22.1, cloog 0.18.4, newlib 3.3.0, GDB 9.1
-# binutils 2.31.1, gcc 9.0.1 , isl 0.18  , cloog 0.18.1, newlib 3.1.0, GDB 8.2.1
-# binutils 2.32  , gcc 9.0.1 , isl 0.21  , cloog 0.18.4, newlib 3.1.0, GDB 8.2.1                    [WiP]
-# binutils 2.32  , gcc 9.1.0 , isl 0.21  , cloog 0.18.4, newlib 3.1.0, GDB 8.2.1
-# binutils 2.32  , gcc 9.2.0 , isl 0.21  , cloog 0.18.4, newlib 3.1.0, GDB 8.3
-# binutils 2.34  , gcc 9.3.0 , isl 0.22.1, cloog 0.18.4,             , GDB 9.2
-# binutils 2.32  , gcc 10.0.0, isl 0.21  , cloog 0.18.4, newlib 3.1.0, GDB 8.2.1					[WiP]
-# binutils 2.34  , gcc 10.1.0, isl 0.22  , cloog 0.18.4, newlib 3.3.0, GDB 9.2
-# binutils 2.34  , gcc 10.2.0, isl 0.22.1, cloog 0.18.4, newlib 3.3.0, GDB 9.2
+# binutils    , gcc  , isl , cloog ,             , GDB 
+# binutils 2.36   , gcc 4.5.4 , isl 0.12.2, cloog 0.16.1,             , GDB 
+# binutils 2.16.1 , gcc 4.9.4 , isl 0.12.2, cloog 0.18.1,             , GDB 8.2.1
+# binutils 2.31.1 , gcc 5.5.0 , isl 0.18  , cloog 0.18.1, newlib 3.1.0, GDB 8.2.1
+# binutils 2.27   , gcc 6.4.0 , isl 0.18  , cloog 0.18.1
+# binutils 2.30   , gcc 6.5.0 , isl 0.18  , cloog 0.18.1
+# binutils 2.28   , gcc 7.1.0 , isl 0.16.1, cloog 0.18.1
+# binutils 2.31.1 , gcc 7.3.0 , isl 0.16.1, cloog 0.18.1
+# binutils 2.31.1 , gcc 7.4.0 , isl 0.18  , cloog 0.18.1
+# binutils 2.33.1 , gcc 7.5.0 , isl 0.22  , cloog 0.18.4, newlib 3.1.0, GDB 8.3.1
+# binutils 2.32   , gcc 8.1.0 , isl 0.21  , cloog 0.18.4,             , GDB 8.2.1
+# binutils 2.30   , gcc 8.2.0 , isl 0.18  , cloog 0.18.1,             , GDB 8.2.1
+# binutils 2.31.1 , gcc 8.3.0 , isl 0.18  , cloog 0.18.1, newlib 3.1.0, GDB 8.2.1
+# binutils 2.34   , gcc 8.4.0 , isl 0.22.1, cloog 0.18.4, newlib 3.3.0, GDB 9.1
+# binutils 2.36   , gcc 8.5.0 , isl N/A   , cloog N/A   , newlib 4.1.0
+# binutils 2.31.1 , gcc 9.0.1 , isl 0.18  , cloog 0.18.1, newlib 3.1.0, GDB 8.2.1
+# binutils 2.32   , gcc 9.0.1 , isl 0.21  , cloog 0.18.4, newlib 3.1.0, GDB 8.2.1                    [WiP]
+# binutils 2.32   , gcc 9.1.0 , isl 0.21  , cloog 0.18.4, newlib 3.1.0, GDB 8.2.1
+# binutils 2.32   , gcc 9.2.0 , isl 0.21  , cloog 0.18.4, newlib 3.1.0, GDB 8.3
+# binutils 2.34   , gcc 9.3.0 , isl 0.22.1, cloog 0.18.4,             , GDB 9.2
+# binutils 2.35.2 , gcc 9.4.0 , isl N/A   , cloog N/A   , newlib 4.1.0, GDB 10.2
+# binutils 2.32   , gcc 10.0.0, isl 0.21  , cloog 0.18.4, newlib 3.1.0, GDB 8.2.1					[WiP]
+# binutils 2.34   , gcc 10.1.0, isl 0.22  , cloog 0.18.4, newlib 3.3.0, GDB 9.2
+# binutils 2.34   , gcc 10.2.0, isl 0.22.1, cloog 0.18.4, newlib 3.3.0, GDB 9.2
+# binutils 2.36   , gcc 10.3.0, isl 0.18  , cloog 0.18.1, newlib 4.1.0, GDB 
+# binutils 2.36   , gcc 11.1.0, isl 0.18  , cloog 0.18.1, newlib 4.1.0, GDB 10.2
 #
 # libgcc, and libstdc++-v3, are incuded in the GCC package
+#
+# Additional dependencies
+# gmp, mpfr, and mpc
 #
 # cloog, last version is 0.18.4
 # Last version used by GNU is 0.18.1
 # Version above the one available in the gcc\infrastructure must be manualy downloaded
 # 0.18.4 needs aclocal-1.14 and automake-1.14
+# It is recommended to keep the cloog version from the gcc package to avoid compilation error
 #
-# isl, last version is 0.22.1
+# isl, last version is 0.24
 # Version 0.13 (or later) of ISL is incompatible with CLooG 0.18.1 release (and older). Use version 0.12.2 of ISL or the build will fail.
 # Last version used by GNU is 0.18
 # Version above the one available in the gcc\infrastructure must be manualy downloaded
 # 0.18 needs aclocal-1.15 and automake-1.15
+# It is recommended to keep the isl version from the gcc package to avoid compilation error
 #
-# GDB, last version is 9.2
+# GDB, last version is 10.2
 #
-# binutils, last version is 2.34
+# binutils, last version is 2.36.1
+# Version 2.11.2a, 2.12.1a, 2.13.2.1a require to be patched.
+# Version 2.36.1 has compilation error; 2.36 must be avoid for the M68K due to the new bfd-plugins
 # Dave Shepperd reported that the last binutils version to support the m68k-coff target is 2.16.1.
 # Last binutils version to support the m68k-coff target is 2.16.1, it was removed in 2.17
 #
 # gcc:
+# It is claimed that GCC 2.95 generates better M68k code than GCC 3.x.
 # gcc 3.4.6 still supports coff target, but no longer maintained in 4.4 and scheduled for removal
 #
-# newlib, last version is 3.3.0
-# No compilation was successful to generate strict 68000 only
+# newlib, last version is 4.1.0
+# No compilation was successful to generate strict 68000 package
 
-# MINGW settings
+# Download settings
 MINGW_INSTALL=NO
+DOWNLOAD_PKG=YES
 
-# Versions.
-BINUTILS_VERSION=binutils-2.34
-GCC_VERSION=gcc-10.2.0
-ISL_VERSION=isl-0.22.1
+# Build orders (binutils, then GCC, then libs gcc (optional), then newlib (optional), and then GDB
+BINUTILS_ORDER=NO
+GCC_ORDER=NO
+LIBSGCC_ORDER=NO
+NEWLIB_ORDER=YES
+GDB_ORDER=NO
+TESTSUITE_ORDER=NO
+
+# Configure
+BINUTILS_CONFIG=NO
+ISL_CLOOG_REINTEGRATION=NO
+GCC_CONFIG=NO
+
+# Versions
+BINUTILS_VERSION=binutils-2.35.2
+GCC_VERSION=gcc-9.4.0
+ISL_VERSION=isl-0.24
 CLOOG_VERSION=cloog-0.18.4
-NEWLIB_VERSION=newlib-3.3.0
-GDB_VERSION=gdb-9.2
+NEWLIB_VERSION=newlib-4.1.0
+GDB_VERSION=gdb-10.2
 
 # Compilation settings
 # HOST is set for Win32
@@ -129,15 +163,6 @@ CPU=m68000
 TEMPFOLDER=$TARGET-$GCC_VERSION-temp
 DNWLFOLDER=downloads
 LANGUAGES=c,c++
-
-# Build orders (binutils, then GCC, then newlib, then libs gcc (optional) and then GDB
-BINUTILS_ORDER=NO
-ISL_CLOOG_REINTEGRATION=NO
-GCC_ORDER=NO
-LIBSGCC_ORDER=NO
-NEWLIB_ORDER=NO
-GDB_ORDER=NO
-TESTSUITE_ORDER=NO
 
 # Build presentation
 echo Building in: $PREFIX
@@ -178,10 +203,12 @@ fi
 # rm -r $TEMPFOLDER
 
 # Download everything.
+if [ $DOWNLOAD_PKG = 'YES' ]
+then
 echo Downloading packages...
 mkdir -p $DNWLFOLDER
 cd $DNWLFOLDER
-if [ ! -e "$BINUTILS_VERSION.tar.bz2" ] ; then wget http://ftp.gnu.org/pub/gnu/binutils/$BINUTILS_VERSION.tar.bz2 ; fi
+if [ ! -e "$BINUTILS_VERSION.tar.bz2" ] ; then wget http://ftp.gnu.org/gnu/binutils/$BINUTILS_VERSION.tar.bz2 ; fi
 if [ ! $GCC_VERSION = 'gcc-10.0.0' ]
 then
 if [ ! -e "$GCC_VERSION.tar.gz" ] ; then wget http://ftp.gnu.org/pub/gnu/gcc/$GCC_VERSION/$GCC_VERSION.tar.gz ; fi
@@ -191,16 +218,20 @@ if [ ! -e "$CLOOG_VERSION.tar.gz" ] ; then wget ftp://gcc.gnu.org/pub/gcc/infras
 if [ ! -e "$NEWLIB_VERSION.tar.gz" ] ; then wget ftp://sourceware.org/pub/newlib/$NEWLIB_VERSION.tar.gz ; fi
 if [ ! -e "$GDB_VERSION.tar.gz" ] ; then wget ftp://sourceware.org/pub/gdb/releases/$GDB_VERSION.tar.gz ; fi
 cd ..
+fi
 
 # Prepare the temp folder
 mkdir -p $TEMPFOLDER
 cd $TEMPFOLDER
 
 # Unpack binutils.
+if [ $DOWNLOAD_PKG = 'YES' ]
+then
 if [ $BINUTILS_ORDER = 'YES' ]
 then 
 echo Unpacking binutils...
 if [ ! -d "$BINUTILS_VERSION" ] ; then tar jxvf ../downloads/$BINUTILS_VERSION.tar.bz2 ; fi
+fi
 fi
 
 # Build binutils.
@@ -209,13 +240,18 @@ then
 echo Building binutils...
 mkdir -p $BINUTILS_VERSION-obj
 cd $BINUTILS_VERSION-obj
-../$BINUTILS_VERSION/configure --disable-nls --host=$HOST --prefix=$PREFIX --target=$TARGET --with-cpu=$CPU --with-arch=$ARCH
+if [ $BINUTILS_CONFIG = YES ]
+then
+../$BINUTILS_VERSION/configure --enable-static --disable-shared --disable-nls --host=$HOST --prefix=$PREFIX --target=$TARGET --with-cpu=$CPU --with-arch=$ARCH
+fi
 make
 make install
 cd ..
 fi
 
 # Unpack GCC and prerequisites
+if [ $DOWNLOAD_PKG = 'YES' ]
+then
 if [ $GCC_ORDER = 'YES' ]
 then
 echo Unpacking GCC and prerequisites...
@@ -225,6 +261,7 @@ if [ ! -d "$GCC_VERSION" ] ; then tar xvf ../downloads/$GCC_VERSION.tar.gz ; fi
 fi
 if [ ! -d "$ISL_VERSION" ] ; then tar jxvf ../downloads/$ISL_VERSION.tar.bz2 ; fi
 if [ ! -d "$CLOOG_VERSION" ] ; then tar xvf ../downloads/$CLOOG_VERSION.tar.gz ; fi
+fi
 fi
 
 # Remove previous ISL and CLooG from the GCC directory tree.
@@ -255,14 +292,19 @@ then
 echo Building GCC...
 mkdir -p $GCC_VERSION-obj
 cd $GCC_VERSION-obj
-if [ $ISL_CLOOG_REINTEGRATION = YES ]
+if [ $GCC_CONFIG = YES ]
 then
-if [ $GCC_VERSION = 'gcc-3.4.6' ]
+#if [ $ISL_CLOOG_REINTEGRATION = YES ]
+#then
+if [ $GCC_VERSION = 'gcc-3.4.6' ] || [ $GCC_VERSION = 'gcc-2.95.3' ]
 then
-../$GCC_VERSION/configure --disable-nls --prefix=$PREFIX --target=$TARGET --enable-languages=$LANGUAGES --with-newlib --disable-libmudflap --disable-libssp --disable-libgomp --disable-libstdcxx-pch --disable-threads --disable-nls --disable-libquadmath --with-gnu-as --with-gnu-ld --without-headers
+../$GCC_VERSION/configure --prefix=$PREFIX --target=$TARGET --enable-languages=$LANGUAGES --with-newlib --disable-libmudflap --disable-libssp --disable-libgomp --disable-libstdcxx-pch --disable-threads --disable-nls --disable-libquadmath --with-gnu-as --with-gnu-ld --without-headers
+# --enable-fixed-point cannot be used due to the lack of support for the M68K
 else
-../$GCC_VERSION/configure --disable-nls --host=$HOST --prefix=$PREFIX --target=$TARGET --with-cpu=$CPU --with-arch=$ARCH --enable-languages=$LANGUAGES --with-newlib --disable-libmudflap --disable-libssp --disable-libgomp --disable-libstdcxx-pch --disable-threads --disable-nls --disable-libquadmath --with-gnu-as --with-gnu-ld --without-headers
+../$GCC_VERSION/configure --host=$HOST --prefix=$PREFIX --target=$TARGET --with-cpu=$CPU --with-arch=$ARCH --enable-languages=$LANGUAGES --with-newlib --disable-libmudflap --disable-libssp --disable-libgomp --disable-libstdcxx-pch --disable-threads --disable-nls --disable-libquadmath --with-gnu-as --with-gnu-ld --without-headers
+# --enable-fixed-point cannot be used due to the lack of support for the M68K
 fi
+#fi
 fi
 make all-gcc
 make install-gcc
@@ -288,10 +330,13 @@ fi
 export PATH=$PATH:$PREFIX/bin
 
 # Unpack newlib.
+if [ $DOWNLOAD_PKG = 'YES' ]
+then
 if [ $NEWLIB_ORDER = 'YES' ]
 then
 echo Unpacking newlib...
 if [ ! -d $NEWLIB_VERSION ] ; then tar vxf ../downloads/$NEWLIB_VERSION.tar.gz ; fi
+fi
 fi
 
 # Patch newlib 2.1.0 compile errors.
@@ -337,10 +382,13 @@ cd ..
 fi
 
 # Unpack GDB.
+if [ $DOWNLOAD_PKG = 'YES' ]
+then
 if [ $GDB_ORDER = 'YES' ]
 then
 echo Unpacking GDB...
 if [ ! -d $GDB_VERSION ] ; then tar vxf ../downloads/$GDB_VERSION.tar.gz ; fi
+fi
 fi
 
 # Compile GDB
